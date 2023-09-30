@@ -19,3 +19,4 @@ jobs:
       - name: Build with Maven
         working-directory: backend/demo
         run: ./mvnw --batch-mode --update-snapshots package
+
