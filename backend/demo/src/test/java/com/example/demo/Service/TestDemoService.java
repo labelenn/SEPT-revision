@@ -1,17 +1,31 @@
 package com.example.demo.Service;
+import com.example.demo.Repository.DemoRepo;
 
+import org.mockito.Mock;
+import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest
 public class TestDemoService {
-    DemoService demoService = new DemoService();
+    @Mock
+    private DemoRepo demoRepo;
+    private DemoServiceImpl demoService;
+
+
+    @BeforeEach
+    public void setUp() {
+        demoService = new DemoServiceImpl(demoRepo);
+    }
 
     @Test
     public void testGetHelloMessage() {
-        String user = "John";
-        String expected = "Hello, " + user + "!";
-        String actual = demoService.getHelloMessage(user);
-        assert(expected.equals(actual));
+        when(demoRepo.getHelloMessage()).thenReturn("Hello, DemoID: " + "1" + "\n" + "Hello, DemoID: " + "2" + "\n" + "Hello, DemoID: " + "3" + "\n");
+        String actual = demoService.getHelloMessage();
+        assertEquals(demoRepo.getHelloMessage(), actual);
     }
 }
