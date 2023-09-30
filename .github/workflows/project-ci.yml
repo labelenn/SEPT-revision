@@ -1,4 +1,4 @@
-name: Team Group-PX-YY CI tasks
+name: Demo CI tasks
 on:
   push:
      branches:
