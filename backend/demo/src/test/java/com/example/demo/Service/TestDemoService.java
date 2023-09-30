@@ -10,7 +10,7 @@ public class TestDemoService {
     @Test
     public void testGetHelloMessage() {
         String user = "John";
-        String expected = "Hello " + user;
+        String expected = "Hello, " + user + "!!!";
         String actual = demoService.getHelloMessage(user);
         assert(expected.equals(actual));
     }
